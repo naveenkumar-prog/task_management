@@ -360,45 +360,6 @@ Push Code:
 git branch -M main
 git push -u origin main
 ```
-
----
-
-# Deployment (Bonus)
-
-## Option 1: Live Deployment
-
-Deploy frontend using Vercel.
-
-Deploy backend using Render, Railway, or any Node.js hosting platform.
-
-Update frontend API URL after backend deployment.
-
-Example:
-
-```env
-VITE_API_URL=https://your-backend-url.com
-```
-
----
-
-## Option 2: Dockerization
-
-Create Dockerfiles for frontend and backend.
-
-Build Images:
-
-```bash
-docker build -t task-frontend .
-docker build -t task-backend .
-```
-
-Run Containers:
-
-```bash
-docker run -p 5173:5173 task-frontend
-docker run -p 5000:5000 task-backend
-```
-
 ---
 
 # .gitignore
@@ -422,6 +383,51 @@ backend/.env
 ```
 
 --
+
+
+## Docker Setup
+
+### Prerequisites
+
+Install Docker Desktop.
+
+### Run the Application Using Docker
+
+From the project root folder, run:
+
+```bash
+docker-compose up --build
+```
+
+Frontend will run on:
+
+```txt
+http://localhost:5173
+```
+
+Backend will run on:
+
+```txt
+http://localhost:5000
+```
+
+MySQL will run on:
+
+```txt
+localhost:3307
+```
+
+### Stop Docker Containers
+
+```bash
+docker-compose down
+```
+
+### Stop and Remove Database Volume
+
+```bash
+docker-compose down -v
+```
 
 # Author
 
