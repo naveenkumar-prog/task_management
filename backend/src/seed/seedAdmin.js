@@ -1,20 +1,15 @@
-const bcrypt = require("bcryptjs");
-require("dotenv").config();
-
-const sequelize = require("../config/db");
 const User = require("../models/User");
+const bcrypt = require("bcryptjs");
 
 const seedAdmin = async () => {
   try {
-    await sequelize.sync();
-
     const existingAdmin = await User.findOne({
       where: { email: "admin@example.com" }
     });
 
     if (existingAdmin) {
       console.log("Admin already exists");
-      process.exit();
+      return;
     }
 
     const hashedPassword = await bcrypt.hash("Admin@123", 10);
@@ -26,15 +21,10 @@ const seedAdmin = async () => {
       role: "admin"
     });
 
-    console.log("Admin created successfully");
-    console.log("Email: admin@example.com");
-    console.log("Password: Admin@123");
-
-    process.exit();
+    console.log("Admin user created");
   } catch (error) {
-    console.error("Seed failed:", error.message);
-    process.exit(1);
+    console.error("Error creating admin:", error.message);
   }
 };
 
-seedAdmin();
+module.exports = seedAdmin;

@@ -41,11 +41,15 @@ app.use("/api/users", userRoutes);
 app.use("/api/tasks", taskRoutes);
 
 const PORT = process.env.PORT || 5000;
+const seedAdmin = require("./seed/seedAdmin");
 
 sequelize
   .sync({ alter: true })
-  .then(() => {
+  .then(async () => {
     console.log("MySQL synced");
+
+    await seedAdmin();
+
     app.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);
     });
