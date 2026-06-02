@@ -9,7 +9,7 @@ A full-stack Task Management Application built using React.js, Node.js, Express.
 ## GitHub Repository
 
 ```txt
-PASTE_YOUR_GITHUB_REPOSITORY_LINK_HERE
+https://github.com/naveenkumar-prog/task_management/
 ```
 
 ## Live Application
