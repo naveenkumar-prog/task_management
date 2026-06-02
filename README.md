@@ -478,6 +478,26 @@ backend/.env
 
 ---
 
+# Screenshots
+
+## Login Page
+
+<img width="1158" height="573" alt="image" src="https://github.com/user-attachments/assets/eeb489b0-d7cc-42b2-a3f8-0be225775db5" />
+
+## Admin Dashboard
+
+<img width="1339" height="598" alt="image" src="https://github.com/user-attachments/assets/aee71fe2-0249-43f2-8534-b12b4e07ce0c" />
+
+## User Dashboard
+
+<img width="1365" height="429" alt="image" src="https://github.com/user-attachments/assets/6c35719f-230d-4e30-9689-b0a286af2ccb" />
+
+## Dark Theme
+
+<img width="1347" height="599" alt="image" src="https://github.com/user-attachments/assets/704878bb-48d3-4b74-878b-e5a9cff2b10e" />
+
+---
+
 # Author
 
 **Naveenkumar R D**
