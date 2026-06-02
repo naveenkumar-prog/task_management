@@ -1,6 +1,48 @@
 # Task Management Application
 
+🚀 **Fully Dockerized Full Stack Task Management Application with Docker Compose Support**
+
 A full-stack Task Management Application built using React.js, Node.js, Express.js, and MySQL. The application provides role-based access with separate Admin and User dashboards.
+
+# Default Admin Credentials
+
+Use the following credentials to access the Admin Dashboard:
+
+```txt
+Email: admin@example.com
+Password: Admin@123
+```
+
+If the admin account does not exist, run the admin seed script:
+
+```bash
+cd backend
+node src/seed/seedAdmin.js
+```
+
+After seeding, use the credentials above to log in.
+
+---
+
+# Highlights
+
+✅ Role-Based Authentication (Admin/User)
+
+✅ JWT Protected Routes
+
+✅ React Context API State Management
+
+✅ MySQL Database Integration
+
+✅ Dark / Light Theme Support
+
+✅ Toast Notifications
+
+✅ Responsive UI
+
+✅ Fully Dockerized Application
+
+✅ Docker Compose One-Command Setup
 
 ---
 
@@ -10,12 +52,6 @@ A full-stack Task Management Application built using React.js, Node.js, Express.
 
 ```txt
 https://github.com/naveenkumar-prog/task_management/
-```
-
-## Live Application
-
-```txt
-PASTE_YOUR_DEPLOYMENT_LINK_HERE
 ```
 
 ## Explanation Video
@@ -54,6 +90,37 @@ PASTE_YOUR_VIDEO_LINK_HERE
 * Toast Notifications
 * Responsive UI
 * REST API Integration
+* Dockerized Full Stack Application
+* Docker Compose Configuration
+* One-Command Project Setup
+
+---
+
+# Docker Support
+
+This project is fully containerized using Docker and Docker Compose.
+
+The application can be started with a single command without manually installing Node.js dependencies or configuring MySQL locally.
+
+### Containerized Services
+
+* Frontend (React + Vite)
+* Backend (Node.js + Express)
+* MySQL Database
+
+### Run Entire Application
+
+```bash
+docker-compose up --build
+```
+
+This command automatically:
+
+* Builds frontend container
+* Builds backend container
+* Creates MySQL container
+* Connects all services through Docker network
+* Starts the complete application
 
 ---
 
@@ -81,6 +148,11 @@ PASTE_YOUR_VIDEO_LINK_HERE
 
 * MySQL
 
+## DevOps
+
+* Docker
+* Docker Compose
+
 ---
 
 # Project Structure
@@ -91,6 +163,7 @@ project-root/
 ├── frontend/
 │   ├── src/
 │   ├── public/
+│   ├── Dockerfile
 │   ├── package.json
 │   └── .env
 │
@@ -100,11 +173,13 @@ project-root/
 │   ├── routes/
 │   ├── models/
 │   ├── config/
+│   ├── Dockerfile
 │   ├── package.json
 │   └── .env
 │
-├── .gitignore
+├── docker-compose.yml
 ├── README.md
+├── .gitignore
 └── package.json
 ```
 
@@ -123,21 +198,23 @@ Before running the application, ensure the following are installed:
 
 ---
 
-# 1. Clone Repository
+# Local Development Setup
+
+## 1. Clone Repository
 
 ```bash
-git clone <YOUR_GITHUB_REPOSITORY_URL>
+git clone https://github.com/naveenkumar-prog/task_management.git
 ```
 
 Navigate to project directory:
 
 ```bash
-cd <PROJECT_FOLDER_NAME>
+cd task_management
 ```
 
 ---
 
-# 2. Database Setup
+## 2. Database Setup
 
 Open MySQL Workbench and create a database:
 
@@ -145,11 +222,9 @@ Open MySQL Workbench and create a database:
 CREATE DATABASE task_management;
 ```
 
-Use the created database for the application.
-
 ---
 
-# 3. Backend Setup
+## 3. Backend Setup
 
 Navigate to backend folder:
 
@@ -163,7 +238,7 @@ Install dependencies:
 npm install
 ```
 
-Create a `.env` file inside the backend folder:
+Create a `.env` file:
 
 ```env
 PORT=5000
@@ -177,19 +252,13 @@ DB_PORT=3306
 JWT_SECRET=your_secret_key
 ```
 
-Start backend server:
-
-```bash
-npm start
-```
-
-or
+Start backend:
 
 ```bash
 npm run dev
 ```
 
-Backend will run on:
+Backend URL:
 
 ```txt
 http://localhost:5000
@@ -197,7 +266,7 @@ http://localhost:5000
 
 ---
 
-# 4. Frontend Setup
+## 4. Frontend Setup
 
 Open a new terminal.
 
@@ -213,7 +282,7 @@ Install dependencies:
 npm install
 ```
 
-Create a `.env` file inside frontend folder:
+Create a `.env` file:
 
 ```env
 VITE_API_URL=http://localhost:5000
@@ -225,7 +294,7 @@ Start frontend:
 npm run dev
 ```
 
-Frontend will run on:
+Frontend URL:
 
 ```txt
 http://localhost:5173
@@ -233,20 +302,63 @@ http://localhost:5173
 
 ---
 
-# Running the Application
+# Docker Setup
 
-## Start Backend
+## Prerequisites
+
+Install Docker Desktop.
+
+Verify installation:
 
 ```bash
-cd backend
-npm start
+docker --version
+docker compose version
 ```
 
-## Start Frontend
+---
+
+## Run Application Using Docker
+
+From project root:
 
 ```bash
-cd frontend
-npm run dev
+docker compose up --build
+```
+
+Application URLs:
+
+Frontend:
+
+```txt
+http://localhost:5173
+```
+
+Backend:
+
+```txt
+http://localhost:5000
+```
+
+MySQL:
+
+```txt
+localhost:3307
+```
+
+---
+
+## Stop Containers
+
+```bash
+docker compose down
+```
+
+---
+
+## Remove Containers and Database Volume
+
+```bash
+docker compose down -v
 ```
 
 ---
@@ -322,49 +434,31 @@ DELETE /api/tasks/:id
 
 ---
 
-# GitHub Setup
+# Environment Variables
 
-Initialize Git:
+## Backend
 
-```bash
-git init
+```env
+PORT=5000
+
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=your_password
+DB_NAME=task_management
+DB_PORT=3306
+
+JWT_SECRET=your_secret_key
 ```
 
-Add Remote Repository:
+## Frontend
 
-```bash
-git remote add origin <YOUR_REPOSITORY_URL>
+```env
+VITE_API_URL=http://localhost:5000
 ```
 
-Verify:
-
-```bash
-git remote -v
-```
-
-Add Files:
-
-```bash
-git add .
-```
-
-Commit Changes:
-
-```bash
-git commit -m "Initial Submission"
-```
-
-Push Code:
-
-```bash
-git branch -M main
-git push -u origin main
-```
 ---
 
 # .gitignore
-
-Create a `.gitignore` file in the project root:
 
 ```gitignore
 frontend/node_modules/
@@ -382,57 +476,12 @@ backend/.env
 *.log
 ```
 
---
-
-
-## Docker Setup
-
-### Prerequisites
-
-Install Docker Desktop.
-
-### Run the Application Using Docker
-
-From the project root folder, run:
-
-```bash
-docker-compose up --build
-```
-
-Frontend will run on:
-
-```txt
-http://localhost:5173
-```
-
-Backend will run on:
-
-```txt
-http://localhost:5000
-```
-
-MySQL will run on:
-
-```txt
-localhost:3307
-```
-
-### Stop Docker Containers
-
-```bash
-docker-compose down
-```
-
-### Stop and Remove Database Volume
-
-```bash
-docker-compose down -v
-```
+---
 
 # Author
 
-Naveenkumar R D
+**Naveenkumar R D**
 
 Full Stack Developer
 
-React.js | Node.js | Express.js | MySQL
+React.js | Node.js | Express.js | MySQL | Docker
